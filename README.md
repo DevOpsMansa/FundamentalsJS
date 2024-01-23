@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Fundamentals of JavaScript #
 
 ## Grades of Students in a class
@@ -94,3 +95,18 @@ by Eric (Mansa) Marah.
 * https://www.w3schools.com/js/js_object_definition.asp
 * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
 * https://stackoverflow.com/questions/8217419/how-to-determine-if-a-javascript-array-contains-an-object-with-an-attribute-that
+=======
+# FundamentalsJS
+## Objectives:
+1. Employ basic JavaScript syntax accurately.
+2. Implement control flow structures such as conditionals and loops effectively.
+3. Use arrays and objects to organize and manage data.
+4. Develop functions to create reusable code.
+5. Utilize loops and iteration to navigate through data collections.
+6. Implement error handling to manage potential code failures gracefully.
+## Instructions:
+You will create a script that gathers data, processes it, and then outputs a consistent result as described by a specification. This is a very typical situation in industry, and this particular scenario has been modified from a real application. The data you will use is provided below.
+You will be provided with four different types of data:
+
+
+>>>>>>> 11d76cb3b3e79c96d88e80ec7f0bf9be96f5d951
