@@ -337,6 +337,26 @@ student.avg_max += possiblePoints;
 return (studentScore / possiblePoints).toFixed(3); //Round up number to 3 decimal
 }
 
+console.log(`
+******************************
+***4th Function Declaration***
+******************************
+The function calculates average score for each student
+@param {array of objects} studentsScores 
+`);
+function calculateAverageScore(studentsScores) {
+//Looping through all student score info
+    for (const index in studentsScores) {
+//If the  maximum available score is 0 skip this student
+    if (studentsScores[index].avg_max !== 0) {
+//Calculate average score
+    studentsScores[index].avg = (studentsScores[index].avg_result / studentsScores[index].avg_max).toFixed(3);
+}
+else { continue; }
+}
+//No return value as we are working with references
+}
+
 
 
 
