@@ -201,6 +201,62 @@ catch (err) {
     console.log(err);
 }
 
+console.log(`
+**************************
+***Function Declaration***
+**************************
+1) take the assignment group and loop for each assignment
+2) check if this assignment's due date has passed if not - skip this assignment
+3) check submissions
+4) if there is a first submission for a student - create an object, else add new submission
+5) create additional properties for average score calculation
+6) calculate all average scores
+7) output result
+
+
+Scores counting Function
+@param {object} ag  - assignment info for each course
+@param {object} course  - the course that would be evaluated
+@param {array of object} submissions  - student submission
+@returns  {array of objects} - return info about each  student - average score and for each given assignment
+`);
+
+function getLearnerData(course, ag, submissions) {
+//Learner information in an Array
+   let result = [];
+//First, check assignment group belong to course. Otherwise... throw an error
+   if (course.id !== ag.course_id) { throw new Error("Check Assignment Group for another Course!")
+};
+//Take the current date
+const currentDate = String(new Date().toJSON()).slice(0, 10);
+//Run loop for each assignment
+   for (const assignment of ag.assignments) {
+//Check for the due date whether we need to estimate this assignment or not
+
+
+if (assignment.due_at <= currentDate) {
+//Check all student submission for that given assignment
+   for (const learnerSubmition of submissions.filter(submission => submission.assignment_id === assignment.id)) {
+
+//get reference of a learner from the result array
+let student = getLearner(result, learnerSubmition.learner_id);
+
+//Add a new property where the key is an assignment id and the value is a calculated score
+student[assignment.id] = calculateAssignmentScore(student, assignment, learnerSubmition.submission); // Assignment score calculation
+};
+//Skip over the assignment if it is not yet due
+} else {
+    continue; 
+}
+}
+
+calculateAverageScore(result); //calculate the average score for each student in the list
+deleteAdditionalProperties(result, "avg_result", "avg_max"); //delete additional properties that we need to calculate average score
+
+//return the output
+return result;
+}
+
 
 
 
