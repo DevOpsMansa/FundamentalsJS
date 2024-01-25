@@ -202,9 +202,9 @@ catch (err) {
 }
 
 console.log(`
-**************************
-***Function Declaration***
-**************************
+******************************
+***1st Function Declaration***
+******************************
 1) take the assignment group and loop for each assignment
 2) check if this assignment's due date has passed if not - skip this assignment
 3) check submissions
@@ -258,6 +258,39 @@ return result;
 }
 
 
+console.log(`
+******************************
+***2nd Function Declaration***
+******************************
+A function that gets an existing student from the list or adds a new student to the list and then returns the result
+@param {array of objects} learners  - A list of all students who submitted assignments
+@param {number} learner_id  - id of examine learner
+@returns - the reference for the learner 
+`);
+
+function getLearner(learners, learner_id) {
+    let learner = {}; //Creates a new object
+
+const isStudentExist = learners.some(item => item.id === learner_id); //Boolean variable
+
+if (isStudentExist) { //check if there we have any other assignments for that student in our result array
+
+learner = learners.find(item => item.id === learner_id) //if yes, assign the link for the existing object
+}
+
+else {
+//If there is a new student, create a new object and add it to our  array of result
+    learner = {
+        id: learner_id,
+        avg: 0,
+        avg_result: 0, //added properties for average score calculation
+        avg_max: 0 //added properties for average score calculation
+    }
+//Add new students to the list to be sure that next time we will work with the same object
+   learners.push(learner); 
+}
+return learner; // return the learner object, connected with  an array of result
+}
 
 
 
