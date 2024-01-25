@@ -179,3 +179,61 @@ You will create a script that gathers data, processes it, and then outputs a con
 You will be provided with four different types of data:
 `);
 
+console.log(`
+***************
+***The Logic***
+***************
+`);
+
+try {
+    console.log(`Assignment for '${CourseInfo.name}'`);
+//result for correct assignment
+    let result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
+
+    console.log(result);
+
+    console.log(`Assignment for '${NewCourseInfo.name}'`);
+//result for wrong course
+    result = getLearnerData(NewCourseInfo, AssignmentGroup, LearnerSubmissions);
+    console.log(result);
+}
+catch (err) {
+    console.log(err);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
