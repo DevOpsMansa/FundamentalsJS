@@ -291,7 +291,51 @@ else {
 }
 return learner; // return the learner object, connected with  an array of result
 }
+console.log(`
+******************************
+***3rd Function Declaration***
+******************************
+Function to calculate assignment score
+@param {object} student - student who submits the assignment
+@param {object} assignmentInfo - assignment info
+@param {object} learnerSubmition - submition information
+@returns assignment score rounded to 3 decimal
+`);
+function calculateAssignmentScore(student, assignmentInfo, learnerSubmition) {
+    let studentScore = 0;
+//check if the score is a number
+    if (typeof learnerSubmition.score !== 'number'){
+//if not try to convert it to a number
+    let scoreValue = Number(learnerSubmition.score);
+    if (!isNaN(scoreValue) ){
+//use converted value
+    studentScore = scoreValue;
+}
+else{
+    //Do not use this assignment in the average score.
+    return `Student has wrong information for assignment score: ${learnerSubmition.score}`; //string variable
+}
 
+} else { studentScore = learnerSubmition.score; } // local variable for student score
+
+//Check to see if the  was not late for submission
+if (learnerSubmition.submitted_at > assignmentInfo.due_at) {
+studentScore -= assignmentInfo.points_possible * 0.1 //penalty for late submission of assignment
+}
+//check if the assignment counts or not toward final grade
+//Decide if possible scores is 0 - assignment doesn't count
+//Also Decide if possible points are not a number - assignment doesn't count
+const possiblePoints = Number(assignmentInfo.points_possible);
+if (possiblePoints === 0 || isNaN(possiblePoints)) {
+const scoreMsg = "This assignment does not count toward the final grade."; //string variable
+return scoreMsg;
+}
+//Increase additional properties for average score
+student.avg_result += studentScore;
+student.avg_max += possiblePoints;
+//Return the result
+return (studentScore / possiblePoints).toFixed(3); //Round up number to 3 decimal
+}
 
 
 
