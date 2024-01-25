@@ -357,7 +357,28 @@ else { continue; }
 //No return value as we are working with references
 }
 
+console.log(`
+******************************
+***5th Function Declaration***
+******************************
+This function deletes listed properties from objects in the given array
+@param {array of objects with properties} dataArray 
+@param  {property names} properties  
+`);
 
+function deleteAdditionalProperties(dataArray, ...properties){
+if(properties.length > 0) // If there is any properties that we want to delete
+{
+//Looping for each element in the dataArray
+dataArray.forEach(element => { 
+//Looping for each property in the property list
+    properties.forEach(property =>{
+//Delete property in object
+        delete element[property]
+    });
+    });
+}
+}
 
 
 
